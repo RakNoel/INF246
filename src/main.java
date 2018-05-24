@@ -1,3 +1,9 @@
+/**
+ * Generator stolen from open source project
+ * <a href="https://github.com/graphstream/gs-algo ">
+ *     Link to project
+ * </a>
+ * */
 import org.graphstream.algorithm.generator.BarabasiAlbertGenerator;
 
 /**
@@ -8,5 +14,7 @@ import org.graphstream.algorithm.generator.BarabasiAlbertGenerator;
  * @since 24.05.18
  */
 public class main {
-
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
 }
