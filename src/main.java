@@ -79,13 +79,13 @@ public class main {
             //Degree distrobution
             System.out.println("Degrees:");
             for (int deg : degrees)
-                System.out.printf("%d ", deg);
+                System.out.printf("%d, ", deg);
             System.out.println();
 
             //Cumulative degree distrobution
             System.out.println("Cumulative degree:");
             for (double deg : cumulativeDistrobution(degrees))
-                System.out.printf("%.4f ", deg);
+                System.out.print(String.format("%.4f ", deg).replace(',', '.') + ", ");
             System.out.println();
 
             //TODO: Make into function f(N)
