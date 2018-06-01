@@ -82,7 +82,6 @@ public class main {
             int[] degrees = degreeDistribution(graph);
             System.out.printf("Nodes %d: %n", graph.getNodeCount());
 
-            //TODO: Convert to powerLaw and compare
             //Degree distrobution
             System.out.println("Degrees:");
             for (int deg : degrees)
