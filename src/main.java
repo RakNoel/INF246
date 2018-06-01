@@ -5,7 +5,6 @@
  * </a>
  */
 
-import org.graphstream.algorithm.Toolkit;
 import org.graphstream.algorithm.generator.BarabasiAlbertGenerator;
 import org.graphstream.algorithm.generator.Generator;
 import org.graphstream.graph.Graph;
@@ -72,6 +71,7 @@ public class main {
                 }
 
                 if (i % 10 == 0) {
+                    //Commented due to slow runtime
                     //avgCC.add(Toolkit.averageClusteringCoefficient(graph));
                     for (Node n : tracker)
                         charts.get(n).add(n.getDegree());
