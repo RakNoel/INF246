@@ -5,6 +5,7 @@
  * </a>
  */
 
+import org.graphstream.algorithm.Toolkit;
 import org.graphstream.algorithm.generator.BarabasiAlbertGenerator;
 import org.graphstream.algorithm.generator.Generator;
 import org.graphstream.graph.Graph;
@@ -39,6 +40,8 @@ public class main {
         Generator gen = new BarabasiAlbertGenerator(m);
         Graph graph = new SingleGraph("Barabàsi-Albert");
 
+        ((BarabasiAlbertGenerator) gen).setExactlyMaxLinksPerStep(true);
+
         //Connect generator to graph and initialize 2 first nodes
         gen.addSink(graph);
         gen.begin();
@@ -52,6 +55,7 @@ public class main {
 
         HashMap<Node, Queue<Integer>> charts = new HashMap<>();
         ArrayList<Node> tracker = new ArrayList<>();
+        ArrayList<Double> avgCC = new ArrayList<>();
 
         Node p = graph.getNode("0");
         charts.put(p, new LinkedList<>());
@@ -67,9 +71,11 @@ public class main {
                     tracker.add(n);
                 }
 
-                if (i % 10 == 0)
+                if (i % 10 == 0) {
+                    //avgCC.add(Toolkit.averageClusteringCoefficient(graph));
                     for (Node n : tracker)
                         charts.get(n).add(n.getDegree());
+                }
             }
 
             int[] degrees = degreeDistribution(graph);
@@ -88,10 +94,13 @@ public class main {
                 System.out.print(String.format("%.4f ", deg).replace(',', '.') + ", ");
             System.out.println();
 
-            //TODO: Make into function f(N)
             //Avg clustering
             System.out.printf("Avg clustering coefficient %.3f %n%n", averageClusteringCoefficient(graph));
         }
+
+        System.out.println("Avg avg clustering coeff");
+        for (Double d : avgCC)
+            System.out.print(String.format("%.4f ", d).replace(',', '.') + ", ");
 
         PrintWriter writer = new PrintWriter("graphstream.csv", "UTF-8");
 
